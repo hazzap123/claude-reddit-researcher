@@ -4,12 +4,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-Research automation that scrapes Reddit and MoneySavingExpert forums, performs sentiment analysis and entity tracking, and exports combined results to Excel with markdown reports.
+Research automation that scrapes Reddit, performs sentiment analysis and entity tracking, and exports results to Excel with markdown reports.
 
 ## Workflow
 
 1. **Brief** - User describes what they want to research
-2. **Config** - Claude generates JSON config with search terms, subreddits, MSE URLs, entities
+2. **Config** - Claude generates JSON config with search terms, subreddits, entities
 3. **Iterate** - Review and refine config together
 4. **Run** - Execute research with `python3 reddit_research.py config.json`
 
@@ -32,10 +32,6 @@ Outputs go to `output/` folder:
   "search_terms": ["term 1", "term 2"],
   "subreddits": ["subreddit1", "subreddit2"],
 
-  "mse_urls": [
-    "https://forums.moneysavingexpert.com/discussion/123/thread-name"
-  ],
-
   "entities_to_track": ["Company A", "Product B"],
 
   "keywords_positive": ["great", "recommend"],
@@ -57,7 +53,7 @@ Configs are stored with their project data in `output/{project}/`:
 | Project Folder | Config | Use Case |
 |----------------|--------|----------|
 | `output/moneybox/` | `config_moneybox.json` | Company research (Reddit-only, competitor analysis) |
-| `output/hargreaves_lansdown/` | `config_example_financial.json` | Financial services (Reddit + MSE) |
+| `output/hargreaves_lansdown/` | `config_example_financial.json` | Financial services |
 | `output/smart_bulbs/` | `config.json` | Product research |
 | `output/mmwave_sensors/` | `config_mmw_sensors.json` | Product research |
 | `output/health_research/` | `config_les_reflux.json` | Health research |
@@ -83,9 +79,7 @@ pip install praw pandas openpyxl python-dotenv requests beautifulsoup4
 ## Folder Structure
 
 ```
-├── run_research.py             # Main unified script
-├── reddit_research.py          # Reddit-only (standalone)
-├── mse_forum_scraper.py        # MSE-only (standalone, legacy)
+├── reddit_research.py          # Main research script
 ├── legacy/                     # Deprecated scripts
 └── output/                     # Generated files (gitignored)
     ├── {project}/              # One folder per research project

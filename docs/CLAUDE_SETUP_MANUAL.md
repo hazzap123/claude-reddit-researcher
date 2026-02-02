@@ -355,7 +355,7 @@ Check your `.env` file exists and has no typos or extra spaces.
 - Customer pain points
 
 ### Extend the Tool
-- Add other data sources (MoneySavingExpert forums, Hacker News)
+- Add other data sources (Hacker News, Twitter, etc.)
 - Improve sentiment analysis with custom keywords
 - Build a dashboard for tracking over time
 
