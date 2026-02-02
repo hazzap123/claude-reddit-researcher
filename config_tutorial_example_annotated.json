@@ -1,0 +1,97 @@
+{
+  // =================================================================
+  // REDDIT RESEARCH TOOL - ANNOTATED CONFIG EXAMPLE
+  // =================================================================
+  // NOTE: Standard JSON doesn't support comments. This annotated version
+  // is for learning - use config_tutorial_example.json for actual runs.
+  // =================================================================
+
+  // REQUIRED: The main topic/question you're researching
+  // This appears in output filenames and reports
+  "topic": "Note-taking apps comparison",
+
+  // OPTIONAL: Search queries to find relevant posts
+  // The tool searches for these exact phrases across Reddit
+  // Tips:
+  //   - Use quotes for exact phrases: "best note app"
+  //   - Include variations: "Notion vs Obsidian", "Obsidian vs Notion"
+  //   - Add product names, comparisons, and reviews
+  "search_terms": [
+    "Notion vs Obsidian",
+    "best note taking app",
+    "Notion review",
+    "Obsidian review",
+    "switching from Notion"
+  ],
+
+  // OPTIONAL: Specific subreddits to search in
+  // Format: Just the subreddit name (without r/)
+  // Leave empty [] to skip subreddit-specific search
+  // Tip: Mix general + specific communities for better coverage
+  "subreddits": [
+    "productivity",      // General community
+    "Notion",           // Product-specific
+    "ObsidianMD"        // Product-specific
+  ],
+
+  // OPTIONAL: Companies, products, or people to track mentions of
+  // Tool counts how often each appears and calculates sentiment
+  // Case-insensitive matching
+  // Tip: Include main topic + competitors + alternatives
+  "entities_to_track": [
+    "Notion",
+    "Obsidian",
+    "Roam",
+    "Logseq",
+    "Craft",
+    "Apple Notes",
+    "Evernote"
+  ],
+
+  // OPTIONAL: Words that indicate positive sentiment
+  // Used to classify posts/comments as positive
+  // More keywords = better sentiment detection
+  // Tip: Include synonyms and phrase variations
+  "keywords_positive": [
+    "love",
+    "great",
+    "best",
+    "recommend",
+    "amazing",
+    "perfect",
+    "switched to",       // Action indicates satisfaction
+    "game changer"
+  ],
+
+  // OPTIONAL: Words that indicate negative sentiment
+  // Used to classify posts/comments as negative
+  // Tip: Include problem indicators and complaints
+  "keywords_negative": [
+    "hate",
+    "terrible",
+    "slow",
+    "buggy",
+    "expensive",
+    "bloated",
+    "switched away",     // Action indicates dissatisfaction
+    "frustrating"
+  ],
+
+  // REQUIRED: Rate limiting to avoid overwhelming Reddit API
+  // "posts": Max posts to fetch per subreddit/search combo
+  // "comments": Max comment replies to fetch per post
+  // Tip: Start small (10-25) for testing, scale up for real research
+  "limits": {
+    "posts": 25,         // Per search term + subreddit combination
+    "comments": 3        // Top comments per post
+  },
+
+  // OPTIONAL: Search across all of Reddit (not just specified subreddits)
+  // Set to false to only search your specified subreddits
+  "include_all_reddit": true,
+
+  // OPTIONAL: Max posts to fetch when searching all of Reddit
+  // Only applies if include_all_reddit is true
+  // Tip: Keep lower than subreddit limits (broader results = more noise)
+  "all_reddit_limit": 10
+}
