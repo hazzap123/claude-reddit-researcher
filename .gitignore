@@ -1,0 +1,16 @@
+# Credentials
+.env
+
+# Out of date folder
+legacy/
+
+# Output files
+output/
+*.xlsx
+research_output.json
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/

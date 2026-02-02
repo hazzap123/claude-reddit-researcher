@@ -1,0 +1,53 @@
+{
+  "topic": "Note-taking apps comparison",
+
+  "search_terms": [
+    "Notion vs Obsidian",
+    "best note taking app",
+    "Notion review",
+    "Obsidian review",
+    "switching from Notion"
+  ],
+
+  "subreddits": [
+    "productivity",
+    "Notion",
+    "ObsidianMD"
+  ],
+
+  "entities_to_track": [
+    "Notion",
+    "Obsidian",
+    "Roam",
+    "Logseq",
+    "Craft",
+    "Apple Notes",
+    "Evernote"
+  ],
+
+  "keywords_positive": [
+    "love",
+    "great",
+    "best",
+    "recommend",
+    "amazing",
+    "perfect",
+    "switched to",
+    "game changer"
+  ],
+
+  "keywords_negative": [
+    "hate",
+    "terrible",
+    "slow",
+    "buggy",
+    "expensive",
+    "bloated",
+    "switched away",
+    "frustrating"
+  ],
+
+  "limits": {"posts": 25, "comments": 3},
+  "include_all_reddit": true,
+  "all_reddit_limit": 10
+}
