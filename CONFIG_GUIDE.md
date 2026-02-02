@@ -30,9 +30,9 @@ Quick reference for creating research config files.
 **Used for:** Output filenames, report headers
 
 **Examples:**
-- `"Moneybox app review"`
 - `"Best smart bulbs 2026"`
 - `"Product manager career advice"`
+- `"Competitive egg and spoon top tips"`
 
 ---
 
