@@ -1,5 +1,7 @@
 # CLAUDE.md
 
+**FIRST:** Call `mcp__memory__memory_context` to load persistent memory before doing anything else.
+
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Overview
