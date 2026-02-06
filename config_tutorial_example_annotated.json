@@ -48,7 +48,7 @@
   ],
 
   // OPTIONAL: Words that indicate positive sentiment
-  // Added alongside built-in defaults (great, excellent, love, perfect, etc.)
+  // Replaces the built-in defaults, so include any defaults you want to keep
   // More keywords = better sentiment detection
   // Tip: Include domain-specific terms and action verbs
   "keywords_positive": [
@@ -63,7 +63,7 @@
   ],
 
   // OPTIONAL: Words that indicate negative sentiment
-  // Added alongside built-in defaults (bad, terrible, hate, worst, etc.)
+  // Replaces the built-in defaults, so include any defaults you want to keep
   // Tip: Include problem indicators and complaints
   "keywords_negative": [
     "hate",

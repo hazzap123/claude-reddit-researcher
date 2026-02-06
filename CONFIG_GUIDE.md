@@ -108,12 +108,12 @@ Reference for creating research config files.
 ### `keywords_positive` (OPTIONAL)
 **Type:** Array of strings
 **Purpose:** Words indicating positive sentiment
-**Default:** Built-in defaults including `great`, `excellent`, `love`, `perfect`, `best`, `amazing`, `recommend`, `helped`, `worked`, `worth it`, `game changer`
+**Default:** `great`, `excellent`, `love`, `perfect`, `best`, `amazing`, `recommend`, `helped`, `worked`, `worth it`, `game changer`
 
 **Tips:**
+- If you provide this field, it **replaces** the defaults entirely -- so include any defaults you want to keep
 - Add domain-specific positives: `intuitive`, `fast`, `reliable`
 - Include action verbs: `switched to`, `upgraded to`
-- Your keywords are added alongside the defaults
 
 **Example:**
 ```json
@@ -129,7 +129,9 @@ Reference for creating research config files.
 ### `keywords_negative` (OPTIONAL)
 **Type:** Array of strings
 **Purpose:** Words indicating negative sentiment
-**Default:** Built-in defaults including `bad`, `terrible`, `hate`, `worst`, `avoid`, `waste`, `disappointed`, `useless`, `problem`, `issue`, `toxic`
+**Default:** `bad`, `terrible`, `hate`, `worst`, `avoid`, `waste`, `disappointed`, `useless`, `problem`, `issue`, `toxic`
+
+If you provide this field, it **replaces** the defaults entirely.
 
 **Tips:**
 - Include complaints: `waste of money`, `buggy`
