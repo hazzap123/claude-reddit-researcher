@@ -1,6 +1,6 @@
 # Config File Guide
 
-Quick reference for creating research config files.
+Reference for creating research config files.
 
 ---
 
@@ -32,14 +32,13 @@ Quick reference for creating research config files.
 **Examples:**
 - `"Best smart bulbs 2026"`
 - `"Product manager career advice"`
-- `"Competitive egg and spoon top tips"`
+- `"Moneybox investment app feedback"`
 
 ---
 
-### `search_terms` (OPTIONAL)
+### `search_terms` (REQUIRED)
 **Type:** Array of strings
 **Purpose:** Search queries to find relevant posts
-**Default:** `[]` (skip search if empty)
 
 **Tips:**
 - Use exact phrases that people would post
@@ -47,28 +46,27 @@ Quick reference for creating research config files.
 - Add common misspellings or abbreviations
 - Mix broad and specific terms
 
-**Examples:**
+**Example:**
 ```json
 "search_terms": [
-  "iPhone vs Android",           // Comparison
-  "best phone 2026",            // General query
-  "iPhone 16 review",           // Specific product
-  "switching from Android"      // User intent
+  "iPhone vs Android",
+  "best phone 2026",
+  "iPhone 16 review",
+  "switching from Android"
 ]
 ```
 
 ---
 
-### `subreddits` (OPTIONAL)
+### `subreddits` (REQUIRED)
 **Type:** Array of strings
 **Purpose:** Specific communities to search
 **Format:** Just the name (no `r/` prefix)
-**Default:** `[]` (skip if empty)
 
 **Tips:**
 - Mix general + niche communities
-- Check subreddit size (r/all has millions, niche ones are more focused)
-- Product subreddits often have honest discussions
+- Product subreddits often have more honest discussions
+- Check subreddit size -- niche ones are more focused, large ones have more data
 
 **Common Subreddits by Topic:**
 
@@ -86,41 +84,38 @@ Quick reference for creating research config files.
 **Type:** Array of strings
 **Purpose:** Track mentions of companies, products, or people
 **Matching:** Case-insensitive
-**Default:** `[]` (skip entity tracking if empty)
+**Default:** `[]` (skip entity tracking)
 
 **Tips:**
 - Include your main subject + competitors
 - Add common abbreviations (`PM` for Product Manager)
-- Tool counts mentions and calculates sentiment per entity
+- The tool counts mentions and calculates sentiment per entity
 
-**Examples:**
+**Example:**
 ```json
 "entities_to_track": [
-  "Moneybox",          // Your research target
-  "Vanguard",          // Competitor 1
-  "Nutmeg",            // Competitor 2
-  "Freetrade"          // Competitor 3
+  "Moneybox",
+  "Vanguard",
+  "Nutmeg",
+  "Freetrade"
 ]
 ```
 
-**Output:** Excel sheet showing:
-- Total mentions per entity
-- Positive vs negative sentiment
-- Percentage breakdown
+**Output:** An Excel sheet showing total mentions, positive vs negative sentiment, and percentage breakdown per entity.
 
 ---
 
 ### `keywords_positive` (OPTIONAL)
 **Type:** Array of strings
 **Purpose:** Words indicating positive sentiment
-**Default:** `[]` (basic sentiment only)
+**Default:** Built-in defaults including `great`, `excellent`, `love`, `perfect`, `best`, `amazing`, `recommend`, `helped`, `worked`, `worth it`, `game changer`
 
 **Tips:**
-- Include enthusiastic words: `amazing`, `love`, `highly recommend`
-- Add action verbs: `switched to`, `upgraded to`
-- Use domain-specific positives: `intuitive`, `fast`, `reliable`
+- Add domain-specific positives: `intuitive`, `fast`, `reliable`
+- Include action verbs: `switched to`, `upgraded to`
+- Your keywords are added alongside the defaults
 
-**Examples:**
+**Example:**
 ```json
 "keywords_positive": [
   "love", "great", "best", "recommend",
@@ -134,14 +129,14 @@ Quick reference for creating research config files.
 ### `keywords_negative` (OPTIONAL)
 **Type:** Array of strings
 **Purpose:** Words indicating negative sentiment
-**Default:** `[]` (basic sentiment only)
+**Default:** Built-in defaults including `bad`, `terrible`, `hate`, `worst`, `avoid`, `waste`, `disappointed`, `useless`, `problem`, `issue`, `toxic`
 
 **Tips:**
-- Include complaints: `terrible`, `waste of money`, `buggy`
+- Include complaints: `waste of money`, `buggy`
 - Add frustration words: `frustrating`, `annoying`, `disappointed`
-- Use action verbs: `switched away`, `cancelled`, `refunded`
+- Include action verbs: `switched away`, `cancelled`, `refunded`
 
-**Examples:**
+**Example:**
 ```json
 "keywords_negative": [
   "hate", "terrible", "avoid", "waste",
@@ -152,46 +147,50 @@ Quick reference for creating research config files.
 
 ---
 
-### `limits` (REQUIRED)
+### `limits` (OPTIONAL)
 **Type:** Object with two numbers
-**Purpose:** Control how much data to fetch (API rate limiting)
+**Purpose:** Control how much data to fetch
+**Default:** `{"posts": 50, "comments": 3}`
 
 **Structure:**
 ```json
 "limits": {
-  "posts": 25,      // Max posts per search_term + subreddit combo
-  "comments": 3     // Max top-level comments per post
+  "posts": 25,
+  "comments": 3
 }
 ```
 
-**Calculation:**
+- `posts` -- Max posts fetched per search term + subreddit combination
+- `comments` -- Max top-level comments fetched per post
+
+**Rough calculation:**
 ```
-Total API calls ≈ (search_terms × subreddits × posts) + (posts × comments)
+Total entries ≈ (search_terms x subreddits x posts) + (posts x comments)
 ```
 
 **Recommendations:**
-- **Quick test:** `"posts": 10, "comments": 2` (~2-5 min)
-- **Standard research:** `"posts": 25, "comments": 3` (~5-10 min)
-- **Deep research:** `"posts": 50, "comments": 5` (~15-30 min)
 
-**Example:**
-- 3 subreddits × 5 search terms × 25 posts = 375 posts
-- 375 posts × 3 comments = 1,125 comments
-- **Total entries:** ~1,500
+| Use case | posts | comments | Approx. time |
+|----------|-------|----------|--------------|
+| Quick test | 10 | 2 | 2-5 min |
+| Standard research | 25 | 3 | 5-10 min |
+| Deep research | 50 | 5 | 15-30 min |
+
+**Example:** 3 subreddits x 5 search terms x 25 posts = 375 posts. With 3 comments each = 1,125 comments. Total: ~1,500 entries.
 
 ---
 
 ### `include_all_reddit` (OPTIONAL)
 **Type:** Boolean
-**Purpose:** Search across ALL of Reddit (not just specified subreddits)
-**Default:** `false`
+**Purpose:** Also search across all of Reddit (not just your specified subreddits)
+**Default:** `true`
 
 **When to use:**
 - You want to find discussions in unexpected places
 - Your topic is broad and discussed everywhere
 - You want to discover new relevant subreddits
 
-**When to skip:**
+**When to disable:**
 - Topic is niche and specific
 - You only care about particular communities
 - Results are too noisy
@@ -200,32 +199,22 @@ Total API calls ≈ (search_terms × subreddits × posts) + (posts × comments)
 
 ### `all_reddit_limit` (OPTIONAL)
 **Type:** Number
-**Purpose:** Max posts when searching all of Reddit
-**Default:** `0` (disabled)
-**Only applies if:** `include_all_reddit: true`
+**Purpose:** Max posts to fetch when searching all of Reddit
+**Default:** `10`
+**Only applies if:** `include_all_reddit` is `true`
 
-**Tip:** Keep lower than subreddit `limits.posts` to avoid noise
+**Tip:** Keep this lower than `limits.posts` to avoid noise -- r/all results are broader and less targeted.
 
 **Example:**
 ```json
 "limits": {"posts": 25, "comments": 3},
 "include_all_reddit": true,
-"all_reddit_limit": 10           // Only 10 from r/all
+"all_reddit_limit": 10
 ```
 
 ---
 
 ## Complete Examples
-
-### Minimal Config (topic only)
-```json
-{
-  "topic": "Quick test"
-}
-```
-This will work but won't collect much data.
-
----
 
 ### Product Research
 ```json
@@ -298,7 +287,7 @@ This will work but won't collect much data.
 Run with `"posts": 10` first to test your search terms, then increase.
 
 ### 2. Specific > General
-`"iPhone 15 battery life"` finds better discussions than `"iPhone"`
+`"iPhone 15 battery life"` finds better discussions than `"iPhone"`.
 
 ### 3. Test Your Search Terms
 Search Reddit manually first to see if your terms return good results.
@@ -307,12 +296,12 @@ Search Reddit manually first to see if your terms return good results.
 Entity tracking is most useful when comparing multiple options.
 
 ### 5. Domain-Specific Keywords
-Finance: `returns`, `fees`, `customer service`
-Tech: `buggy`, `intuitive`, `fast`, `crashes`
-Products: `worth it`, `waste of money`, `highly recommend`
+- **Finance:** `returns`, `fees`, `customer service`
+- **Tech:** `buggy`, `intuitive`, `fast`, `crashes`
+- **Products:** `worth it`, `waste of money`, `highly recommend`
 
 ### 6. Check Subreddit Rules
-Some subreddits prohibit promotional content, so discussions are more honest.
+Some subreddits prohibit promotional content, so discussions tend to be more honest.
 
 ---
 
@@ -337,14 +326,3 @@ Some subreddits prohibit promotional content, so discussions are more honest.
 - Decrease `limits.posts`
 - Decrease `limits.comments`
 - Reduce number of `search_terms`
-
----
-
-## File Naming
-
-Save configs with descriptive names:
-- `config_moneybox.json`
-- `config_smart_bulbs.json`
-- `config_pm_careers.json`
-
-Keep them organized in an `output/` or `configs/` folder.
