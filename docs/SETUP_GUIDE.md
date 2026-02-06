@@ -53,13 +53,19 @@ python3 -m pip install -r requirements.txt
 
 ## Step 3: Create Reddit API Credentials
 
-### 3.1 Go to Reddit App Preferences
+### 3.1 Log into Reddit
 
-Log into [reddit.com](https://reddit.com), then go to: **https://www.reddit.com/prefs/apps**
+Go to [reddit.com](https://reddit.com) and log in. If you don't have a Reddit account, create one first (it's free).
 
-### 3.2 Create an App
+### 3.2 Go to App Preferences
 
-1. Scroll to the bottom and click **"create another app..."**
+Navigate to: **https://www.reddit.com/prefs/apps**
+
+If that link doesn't work, you can get there manually: click your profile icon → Settings → Safety & Privacy → scroll to the bottom → "Manage third-party app authorization".
+
+### 3.3 Create an App
+
+1. Scroll to the bottom and click **"create another app..."** (or **"are you a developer? create an app..."**)
 
 2. Fill in the form:
    - **name**: `research-tool` (or anything you like)
@@ -70,7 +76,7 @@ Log into [reddit.com](https://reddit.com), then go to: **https://www.reddit.com/
 
 3. Click **"create app"**
 
-### 3.3 Find Your Credentials
+### 3.4 Find Your Credentials
 
 After creating, you'll see your app listed on the page. You need two values:
 
