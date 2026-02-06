@@ -24,7 +24,7 @@ cd claude-reddit-researcher
 **If you don't have git:** Go to [github.com/hazzap123/claude-reddit-researcher](https://github.com/hazzap123/claude-reddit-researcher), click the green **"Code"** button, then **"Download ZIP"**. Extract the ZIP, then open a terminal and navigate to the folder:
 
 ```bash
-cd Downloads/claude-reddit-researcher-main
+cd ~/downloads/claude-reddit-researcher-main
 ```
 
 All remaining commands should be run from inside the project folder.
