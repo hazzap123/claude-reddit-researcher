@@ -10,12 +10,12 @@
   // This appears in output filenames and reports
   "topic": "Note-taking apps comparison",
 
-  // OPTIONAL: Search queries to find relevant posts
+  // REQUIRED: Search queries to find relevant posts
   // The tool searches for these exact phrases across Reddit
   // Tips:
-  //   - Use quotes for exact phrases: "best note app"
   //   - Include variations: "Notion vs Obsidian", "Obsidian vs Notion"
   //   - Add product names, comparisons, and reviews
+  //   - Mix broad and specific terms
   "search_terms": [
     "Notion vs Obsidian",
     "best note taking app",
@@ -24,14 +24,13 @@
     "switching from Notion"
   ],
 
-  // OPTIONAL: Specific subreddits to search in
+  // REQUIRED: Specific subreddits to search in
   // Format: Just the subreddit name (without r/)
-  // Leave empty [] to skip subreddit-specific search
   // Tip: Mix general + specific communities for better coverage
   "subreddits": [
-    "productivity",      // General community
-    "Notion",           // Product-specific
-    "ObsidianMD"        // Product-specific
+    "productivity",
+    "Notion",
+    "ObsidianMD"
   ],
 
   // OPTIONAL: Companies, products, or people to track mentions of
@@ -49,9 +48,9 @@
   ],
 
   // OPTIONAL: Words that indicate positive sentiment
-  // Used to classify posts/comments as positive
+  // Added alongside built-in defaults (great, excellent, love, perfect, etc.)
   // More keywords = better sentiment detection
-  // Tip: Include synonyms and phrase variations
+  // Tip: Include domain-specific terms and action verbs
   "keywords_positive": [
     "love",
     "great",
@@ -59,12 +58,12 @@
     "recommend",
     "amazing",
     "perfect",
-    "switched to",       // Action indicates satisfaction
+    "switched to",
     "game changer"
   ],
 
   // OPTIONAL: Words that indicate negative sentiment
-  // Used to classify posts/comments as negative
+  // Added alongside built-in defaults (bad, terrible, hate, worst, etc.)
   // Tip: Include problem indicators and complaints
   "keywords_negative": [
     "hate",
@@ -73,25 +72,28 @@
     "buggy",
     "expensive",
     "bloated",
-    "switched away",     // Action indicates dissatisfaction
+    "switched away",
     "frustrating"
   ],
 
-  // REQUIRED: Rate limiting to avoid overwhelming Reddit API
+  // OPTIONAL: Control how much data to fetch
+  // Default: {"posts": 50, "comments": 3}
   // "posts": Max posts to fetch per subreddit/search combo
-  // "comments": Max comment replies to fetch per post
+  // "comments": Max top-level comments to fetch per post
   // Tip: Start small (10-25) for testing, scale up for real research
   "limits": {
-    "posts": 25,         // Per search term + subreddit combination
-    "comments": 3        // Top comments per post
+    "posts": 25,
+    "comments": 3
   },
 
-  // OPTIONAL: Search across all of Reddit (not just specified subreddits)
+  // OPTIONAL: Also search across all of Reddit (not just specified subreddits)
+  // Default: true
   // Set to false to only search your specified subreddits
   "include_all_reddit": true,
 
   // OPTIONAL: Max posts to fetch when searching all of Reddit
+  // Default: 10
   // Only applies if include_all_reddit is true
-  // Tip: Keep lower than subreddit limits (broader results = more noise)
+  // Tip: Keep lower than limits.posts (broader results = more noise)
   "all_reddit_limit": 10
 }
