@@ -183,9 +183,42 @@ python reddit_research.py config_tutorial_example.json
 
 ---
 
-## What Next?
+## Running Research with Claude Code
 
-Once your test run works, you're ready to research your own topics. See [CONFIG_GUIDE.md](../CONFIG_GUIDE.md) for how to write config files, or use [Claude Code](https://docs.anthropic.com/en/docs/claude-code) to generate configs conversationally -- just describe what you want to research.
+The easiest way to use this tool is through [Claude Code](https://docs.anthropic.com/en/docs/claude-code), which generates configs for you from a plain English brief.
+
+### Getting Started
+
+1. Open Terminal in the project folder and start Claude Code:
+   ```bash
+   claude
+   ```
+
+2. Describe what you want to research. Claude will generate a JSON config, show it to you for review, and run the research when you're happy with it.
+
+3. When it finishes, Claude can help you interpret the results -- just ask.
+
+### Example Prompts
+
+Here are some prompts to get you started:
+
+**Product research:**
+> I want to compare Philips Hue vs LIFX smart bulbs. What do people on Reddit think about reliability, brightness, and value for money?
+
+**Company/brand sentiment:**
+> Research what UK personal finance Reddit users think about Moneybox compared to Vanguard and Nutmeg. Focus on fees, app experience, and customer service.
+
+**Market exploration:**
+> What are people saying about mmWave radar sensors for home automation? I want to understand the main use cases and which products people recommend.
+
+**Career research:**
+> What advice does Reddit give about transitioning into product management? Track mentions of Google, Meta, Amazon, and Microsoft.
+
+### Tips
+
+- Be specific about what you care about -- Claude will pick better search terms and sentiment keywords
+- Ask Claude to adjust the config if the first run returns too few or too many results
+- You can also write configs manually -- see [CONFIG_GUIDE.md](../CONFIG_GUIDE.md) for the full field reference
 
 ---
 

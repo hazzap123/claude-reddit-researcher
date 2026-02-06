@@ -105,13 +105,20 @@ An example config is included at [`config_tutorial_example.json`](config_tutoria
 
 ## Usage with Claude Code
 
-This tool is designed to work with [Claude Code](https://docs.anthropic.com/en/docs/claude-code). Describe what you want to research and Claude will generate a config, run the tool, and help you interpret results.
+This tool is designed to work with [Claude Code](https://docs.anthropic.com/en/docs/claude-code). Start Claude Code in the project folder, describe what you want to research, and it will generate a config, run the tool, and help you interpret results.
 
+```bash
+cd claude-reddit-researcher
+claude
 ```
-> I want to research public sentiment around Moneybox vs competitors on Reddit
 
-Claude generates config → you review → Claude runs the research → results in output/
-```
+Then just describe your research in plain English:
+
+> Research what UK personal finance Reddit users think about Moneybox compared to Vanguard and Nutmeg. Focus on fees, app experience, and customer service.
+
+Claude generates a config → you review and tweak → Claude runs the research → output files appear in the current folder.
+
+See the [Setup Guide](docs/SETUP_GUIDE.md#running-research-with-claude-code) for more example prompts.
 
 ## Project Structure
 
