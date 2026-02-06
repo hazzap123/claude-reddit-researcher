@@ -14,14 +14,20 @@ A step-by-step guide to get the research tool running on your machine.
 
 ## Step 1: Get the Code
 
-Open Terminal and run:
+**If you have git installed:**
 
 ```bash
 git clone https://github.com/hazzap123/claude-reddit-researcher.git
 cd claude-reddit-researcher
 ```
 
-This downloads the project and moves you into the folder. All remaining commands should be run from here.
+**If you don't have git:** Go to [github.com/hazzap123/claude-reddit-researcher](https://github.com/hazzap123/claude-reddit-researcher), click the green **"Code"** button, then **"Download ZIP"**. Extract the ZIP, then open a terminal and navigate to the folder:
+
+```bash
+cd Downloads/claude-reddit-researcher-main
+```
+
+All remaining commands should be run from inside the project folder.
 
 ---
 
