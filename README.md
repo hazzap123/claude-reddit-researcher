@@ -1,4 +1,4 @@
-# Reddit Research Tool
+# Reddit Researcher
 
 Research automation that scrapes Reddit, performs sentiment analysis and entity tracking, and exports results to Excel spreadsheets and markdown reports. Needs Reddit API Key.
 
