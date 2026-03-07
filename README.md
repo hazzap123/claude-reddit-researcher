@@ -1,8 +1,6 @@
 # Reddit Research Tool
 
-!!!THIS ONLY WORKS IF YOU HAVE A REDDIT API KEY AND APP AND POLICY CHANGE MEANS HARD TO GET NOW!!!
-
-Research automation that scrapes Reddit, performs sentiment analysis and entity tracking, and exports results to Excel spreadsheets and markdown reports. 
+Research automation that scrapes Reddit, performs sentiment analysis and entity tracking, and exports results to Excel spreadsheets and markdown reports. Needs Reddit API Key.
 
 Give it a topic, some search terms, and a list of entities to track -- it searches across subreddits, collects posts and comments, classifies sentiment, and produces a multi-sheet Excel workbook with a summary report.
 
