@@ -499,6 +499,34 @@ def export_report(config, analysis, output_path):
 
 
 # ============================================
+# PROGRAMMATIC API
+# ============================================
+
+def run_config(config_dict):
+    """Run research from a config dict. Returns (DataFrame, analysis_dict) or raises on error."""
+    merged = DEFAULT_CONFIG.copy()
+    merged.update(config_dict)
+
+    required = ['topic', 'search_terms', 'subreddits']
+    missing = [f for f in required if f not in merged or not merged[f]]
+    if missing:
+        raise ValueError(f"Missing required fields: {', '.join(missing)}")
+
+    reddit = init_reddit()
+    results = collect_data(reddit, merged)
+
+    if not results:
+        return pd.DataFrame(), {'engagement': {'total_posts': 0, 'total_comments': 0},
+                                 'sentiment': {'Positive': 0, 'Negative': 0, 'Neutral': 0},
+                                 'entities': {}, 'entity_sentiment': {},
+                                 'subreddits': {}, 'top_posts': [], 'date_range': {}}
+
+    df = pd.DataFrame(results)
+    df, analysis = analyze_data(df, merged)
+    return df, analysis
+
+
+# ============================================
 # MAIN
 # ============================================
 
