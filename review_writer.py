@@ -159,12 +159,13 @@ def _format_reviewed_item(item: dict) -> str:
     return f"### [{item['score']}] ~~{item['title']}~~ — reviewed {item['reviewed_date']}"
 
 
-def update_review_md(new_items_df: pd.DataFrame, stream_label: str) -> int:
+def update_review_md(new_items_df: pd.DataFrame, stream_label: str, max_new: int = 0) -> int:
     """Update REVIEW.md with new items, handle checked items, archive old ones.
 
     Args:
         new_items_df: DataFrame of new items to add.
         stream_label: Label for the stream these items came from.
+        max_new: Max new items to add from this stream (0 = unlimited).
 
     Returns:
         Count of new items added.
@@ -194,9 +195,11 @@ def update_review_md(new_items_df: pd.DataFrame, stream_label: str) -> int:
         else:
             still_pending.append(item)
 
-    # Add new items from DataFrame
+    # Add new items from DataFrame (sorted by score, capped by max_new)
     new_count = 0
-    for _, row in new_items_df.iterrows():
+    rows = list(new_items_df.iterrows())
+    rows.sort(key=lambda x: int(x[1].get("priority_score", x[1].get("score", 0))), reverse=True)
+    for _, row in rows:
         score = int(row.get("priority_score", row.get("score", 0)))
         title = str(row.get("title", "Untitled"))[:100]
         text = str(row.get("text", row.get("body", "")))
@@ -205,6 +208,9 @@ def update_review_md(new_items_df: pd.DataFrame, stream_label: str) -> int:
         subreddit = str(row.get("subreddit", "unknown"))
         link = str(row.get("url", ""))
         trending = bool(row.get("trending", False))
+
+        if max_new > 0 and new_count >= max_new:
+            break
 
         still_pending.append({
             "score": score,

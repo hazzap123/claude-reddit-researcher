@@ -103,8 +103,8 @@ def run_scan():
 
         df = score_items(df, stream="usecases")
         new_df, seen = filter_new_items(df, seen)
-        added = update_review_md(new_df, "Use Cases")
-        usecases_digest_items = _collect_digest_items(new_df)
+        added = update_review_md(new_df, "Use Cases", max_new=20)
+        usecases_digest_items = _collect_digest_items(new_df)[:added]
 
         print(f"      {added} new items added to REVIEW.md")
     except Exception:
@@ -122,7 +122,7 @@ def run_scan():
         df = score_items(df, stream="security")
         new_df, seen = filter_new_items(df, seen)
         added = update_review_md(new_df, "Security")
-        security_digest_items = _collect_digest_items(new_df)
+        security_digest_items = _collect_digest_items(new_df)[:added]
 
         print(f"      {added} new items added to REVIEW.md")
     except Exception:

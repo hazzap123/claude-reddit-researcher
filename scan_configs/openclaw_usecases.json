@@ -5,7 +5,7 @@
   "entities_to_track": ["OpenClaw", "NanoClaw", "Clawdbot"],
   "keywords_positive": ["production", "deployed", "stable", "secure", "scalable", "recommend", "great", "excellent", "love", "best", "amazing", "game changer"],
   "keywords_negative": ["vulnerable", "exploit", "injection", "unsafe", "leaked", "broken", "terrible", "waste", "useless"],
-  "limits": {"posts": 50, "comments": 5},
+  "limits": {"posts": 10, "comments": 3},
   "include_all_reddit": true,
-  "all_reddit_limit": 15
+  "all_reddit_limit": 5
 }

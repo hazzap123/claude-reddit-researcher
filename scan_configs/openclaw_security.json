@@ -5,7 +5,7 @@
   "entities_to_track": ["OpenClaw", "NanoClaw"],
   "keywords_positive": ["patched", "fixed", "mitigated", "secure", "hardened"],
   "keywords_negative": ["critical", "RCE", "zero-day", "exploit", "vulnerability", "injection", "bypass", "leak", "disclosure", "unpatched"],
-  "limits": {"posts": 50, "comments": 5},
+  "limits": {"posts": 20, "comments": 5},
   "include_all_reddit": true,
-  "all_reddit_limit": 15
+  "all_reddit_limit": 10
 }
