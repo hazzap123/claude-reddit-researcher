@@ -1,0 +1,11 @@
+{
+  "topic": "OpenClaw Use Cases",
+  "search_terms": ["openclaw", "open claw use case", "openclaw project", "built with openclaw"],
+  "subreddits": ["openclaw", "LocalLLaMA", "artificial", "coding", "selfhosted", "ClaudeAI", "ChatGPT", "LLMDevs", "MachineLearning"],
+  "entities_to_track": ["OpenClaw", "NanoClaw", "Clawdbot"],
+  "keywords_positive": ["production", "deployed", "stable", "secure", "scalable", "recommend", "great", "excellent", "love", "best", "amazing", "game changer"],
+  "keywords_negative": ["vulnerable", "exploit", "injection", "unsafe", "leaked", "broken", "terrible", "waste", "useless"],
+  "limits": {"posts": 50, "comments": 5},
+  "include_all_reddit": true,
+  "all_reddit_limit": 15
+}
